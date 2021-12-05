@@ -737,46 +737,44 @@ hue-6-2: #e6c07b
         <h1 id="verteilte-systeme">Verteilte Systeme</h1>
 <ul>
 <li>stellt ein anpassbares, flexibles Architekturmuster der Informationstechnik innerhalb des Segments der verteilten Systeme dar</li>
-<li>Modularisierung von Software (einfach, verständlich, wartbar)</li>
+</ul>
+<p><strong>Strategie:</strong></p>
+<ul>
+<li>kleine Module mit klaren Aufgaben, Funktionen und Schnittstellen definieren</li>
+</ul>
+<p><strong>Ziele:</strong></p>
+<ul>
+<li>einfach, verständlich, wartbar -&gt; durch Modularisierung von Software</li>
 <li>unabhängige Entwicklung/Ausführung</li>
+</ul>
+<p><strong>jo a hoid</strong></p>
+<ul>
 <li>Kohäsion: ein spezifischer Aufgabenbereich wird erfüllt</li>
 <li>Koppelung: Module tauschen untereinander Nachrichten aus (niedrige: Module sind unabhängig)</li>
 </ul>
-<h2 id="mermale--motivation">Mermale / Motivation</h2>
+<h2 id="motivation">Motivation</h2>
 <ul>
-<li>
-<p>Parallele Verarbeitung (Benutzer und Serviceanfrage)</p>
-</li>
-<li>
-<p>Shared Access: Gemeinsame Nutzung (von Betriebsmittel)</p>
-</li>
-<li>
-<p>Modularisierung: Wiederverwendbarkeit</p>
-</li>
-<li>
-<p>Replikation: Speicherung von Daten auf mehrere Knoten -&gt; Ausfallsicherheit</p>
-</li>
-<li>
-<p>Fehlertoleranz: mögliche Ausfälle müssen berücksichtigt werden</p>
-</li>
-<li>
-<p>Verfügbarkeit: durch Fehlertoleranz erhöht</p>
-</li>
-<li>
-<p>Konsistenz (Daten müssen konsistent bleiben)</p>
-</li>
-<li>
-<p>Heterogenität: für Kommunikation kann unterschiedliche Hard- Software verwendet werden</p>
-</li>
-<li>
-<p>Parallelität: Reihenfolge von Aktionen nicht deterministisch</p>
+<li><em>Parallele Verarbeitung</em> (Benutzer und Serviceanfrage)</li>
+<li><em>Shared Access:</em> Gemeinsame Nutzung (von Betriebsmittel)</li>
+<li><em>Modularisierung:</em> Wiederverwendbarkeit</li>
+<li><em>Replikation:</em> Speicherung von Daten auf mehrere Knoten -&gt; Ausfallsicherheit</li>
+</ul>
+<h2 id="merkmale-1">Merkmale 1</h2>
+<ul>
+<li>Gemeinsame Nutzung von Ressourcen</li>
+<li>Fehlertoleranz: mögliche Ausfälle müssen berücksichtigt werden (einzelne Ausfälle meist unabhängig)</li>
+<li>Verfügbarkeit: durch Fehlertoleranz erhöht</li>
+<li>Konsistenz (Daten müssen konsistent bleiben)</li>
+</ul>
+<h2 id="merkmale-2">Merkmale 2</h2>
+<ul>
+<li><em>Heterogenität:</em> für Kommunikation kann unterschiedliche Hard- Software verwendet werden</li>
+<li><em>Parallelität:</em> Reihenfolge von Aktionen nicht deterministisch
 <ul>
 <li>-&gt; synchronisation: Teilaufgaben in der Richtigenreihenfolge agbearbeitet -&gt; gleiches Ergebnis bei gleichem input</li>
 </ul>
 </li>
-<li>
-<p>Gemeinsame Ressourcen: Ein Programmsystem benötigt physikalische und logische Ressourcen</p>
-</li>
+<li>Gemeinsame Ressourcen: Ein Programmsystem benötigt physikalische und logische Ressourcen</li>
 </ul>
 <h2 id="eigenschaften">Eigenschaften</h2>
 <p><strong>Transparenz</strong></p>
@@ -950,13 +948,6 @@ Accept-Language: en
 <span class="hljs-meta">@Min(0)</span>             <span class="hljs-comment">// Number</span>
 <span class="hljs-meta">@Max(0)</span>             <span class="hljs-comment">// Number</span>
 </div></code></pre>
-<p><strong>Domain Schicht</strong></p>
-<pre><code class="language-Java"><div><span class="hljs-meta">@Query(&quot;select e.city from Employees e group by e.city having count(e) &gt;= All(select count(e2) from Employees e2 group by e2.city)&quot;)</span>
-<span class="hljs-function">List&lt;Cities&gt; <span class="hljs-title">getCityWithMostEmployees</span><span class="hljs-params">()</span></span>;
-
-<span class="hljs-meta">@Query(&quot;select w.tableList from Waiter w where w = :waiter&quot;)</span>
-<span class="hljs-function">List&lt;BranchTable&gt; <span class="hljs-title">getTablesByWaiter</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;waiter&quot;)</span> Waiter waiter)</span></span>;
-</div></code></pre>
 <h2 id="entitätsrelationen">Entitätsrelationen</h2>
 <p><strong>One To One</strong></p>
 <p><strong>Many To One</strong></p>
@@ -965,7 +956,7 @@ Accept-Language: en
 </ul>
 <pre><code class="language-Java"><div>[<span class="hljs-meta">@NotNull</span>]
 <span class="hljs-meta">@ManyToOne</span>
-<span class="hljs-meta">@JoinColumn([name=&quot;table_id&quot;] nullable=false [wenns nicht nullable sein soll ?��] )</span>
+<span class="hljs-meta">@JoinColumn([name=&quot;table_id&quot;] nullable=false [wenns nicht nullable sein soll] )</span>
 <span class="hljs-keyword">private</span> BranchTable table;
 </div></code></pre>
 <p>or/and one to many in branch</p>
@@ -1023,11 +1014,18 @@ Accept-Language: en
 <ul>
 <li>Methoden</li>
 <li>Parameterisierung</li>
-<li>Methodengenerierung</li>
+<li>Methodengenerierung (Spring Boot Data Syntax)</li>
 </ul>
 </li>
-<li>Erstellung von Queries</li>
+<li>Erstellung von Queries (JPQL)</li>
 </ul>
+<h2 id="annotationen">Annotationen</h2>
+<pre><code class="language-Java"><div><span class="hljs-meta">@Query(&quot;select e.city from Employees e group by e.city having count(e) &gt;= All(select count(e2) from Employees e2 group by e2.city)&quot;)</span>
+<span class="hljs-function">List&lt;Cities&gt; <span class="hljs-title">getCityWithMostEmployees</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-meta">@Query(&quot;select w.tableList from Waiter w where w = :waiter&quot;)</span>
+<span class="hljs-function">List&lt;BranchTable&gt; <span class="hljs-title">getTablesByWaiter</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;waiter&quot;)</span> Waiter waiter)</span></span>;
+</div></code></pre>
 <h2 id="methoden">Methoden</h2>
 <ul>
 <li>erweitert Crud Repository
@@ -1083,12 +1081,15 @@ GreaterThan, GreaterThanEqual, Containing, Before, Between, IsNull, NotIn, Like,
 <ul>
 <li>Example:</li>
 </ul>
-<pre><code class="language-Java"><div><span class="hljs-meta">@Query(&quot;select e.city from Employees e group by e.city having count(e) &gt;= All(select count(e2) from Employees e2 group by e2.city)&quot;)</span>
-<span class="hljs-function">List&lt;Cities&gt; <span class="hljs-title">getCityWithMostEmployees</span><span class="hljs-params">()</span></span>;
+<pre><code class="language-Java"><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IEmployeeRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">JpaRepository</span>&lt;<span class="hljs-title">AEmployee</span>, <span class="hljs-title">Long</span>&gt; </span>{
 
-<span class="hljs-meta">@Query(&quot;select w.tableList from Waiter w where w = :waiter&quot;)</span>
-<span class="hljs-function">List&lt;BranchTable&gt; <span class="hljs-title">getTablesByWaiter</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;waiter&quot;)</span> Waiter waiter)</span></span>;
+    <span class="hljs-meta">@Query(&quot;select e.city from Employees e group by e.city having count(e) &gt;= All(select count(e2) from Employees e2 group by e2.city)&quot;)</span>
+    <span class="hljs-function">List&lt;Cities&gt; <span class="hljs-title">getCityWithMostEmployees</span><span class="hljs-params">()</span></span>;
 
+    <span class="hljs-meta">@Query(&quot;select w.tableList from Waiter w where w = :waiter&quot;)</span>
+    <span class="hljs-function">List&lt;BranchTable&gt; <span class="hljs-title">getTablesByWaiter</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;waiter&quot;)</span> Waiter waiter)</span></span>;
+
+}
 </div></code></pre>
 <ul>
 <li>Jpa geniert für jede Datenbank die entsprechenden Queries</li>
@@ -1132,7 +1133,7 @@ GreaterThan, GreaterThanEqual, Containing, Before, Between, IsNull, NotIn, Like,
 
     <span class="hljs-meta">@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)</span>
     <span class="hljs-meta">@ResponseStatus(HttpStatus.CREATED)</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">create</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> T entity)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">create</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> <span class="hljs-meta">@Valid</span> T entity)</span> </span>{
         T createdEntity = repository.save(entity);
         log.info(<span class="hljs-string">&quot;Created Entity with id: &quot;</span> + entity.getId());
         <span class="hljs-keyword">return</span> (T) Hibernate.unproxy(entity);
@@ -1140,7 +1141,7 @@ GreaterThan, GreaterThanEqual, Containing, Before, Between, IsNull, NotIn, Like,
 
     <span class="hljs-meta">@PutMapping(path = &quot;/{id}&quot;)</span>
     <span class="hljs-meta">@ResponseStatus(HttpStatus.ACCEPTED)</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> K id, <span class="hljs-meta">@RequestBody</span> T entity)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> K id, <span class="hljs-meta">@RequestBody</span> <span class="hljs-meta">@Valid</span> T entity)</span> </span>{
         repository.save(entity);
         log.info(<span class="hljs-string">&quot;Updated Entity with id: &quot;</span> + id);
     }
@@ -1152,6 +1153,79 @@ GreaterThan, GreaterThanEqual, Containing, Before, Between, IsNull, NotIn, Like,
         log.info(<span class="hljs-string">&quot;Removed Entity with id: &quot;</span> + id);
     }
 }
+</div></code></pre>
+<pre><code class="language-Java"><div><span class="hljs-meta">@Slf4j</span> 
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RequestMapping(path = &quot;/employees&quot;)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmployeeRessource</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ARessource</span>&lt;<span class="hljs-title">Employee</span>, <span class="hljs-title">Long</span>&gt; </span>{
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">protected</span> IEmployeeRepository employeeRepository;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EmployeeRessource</span><span class="hljs-params">(<span class="hljs-meta">@Autowired</span> JpaRepository&lt;Employees, Long&gt; repository)</span> </span>{
+        <span class="hljs-keyword">super</span>(repository);
+    }
+    
+}
+</div></code></pre>
+<pre><code class="language-Java"><div><span class="hljs-meta">@Slf4j</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ARessource</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AEntity</span>, <span class="hljs-title">K</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Serialazable</span>&gt; </span>{
+
+    <span class="hljs-keyword">protected</span> JpaRepository&lt;T, K&gt; repository;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ARessource</span><span class="hljs-params">(JpaRepository&lt;T, K&gt; repository)</span> </span>{
+        <span class="hljs-keyword">this</span>.repository = repository;
+    }
+
+    <span class="hljs-meta">@GetMapping(path = &quot;/{id}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)</span>
+    <span class="hljs-meta">@ResponseStatus(HttpStatus.OK)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">read</span><span class="hljs-params">(<span class="hljs-meta">@Pathvariable(&#x27;id&#x27;)</span> K id)</span> </span>{
+        T entity = repository.getById(id);
+        log.info(<span class="hljs-string">&#x27;read entity with id: &#x27;</span> + id.toString());
+        <span class="hljs-keyword">return</span> entity;
+    }
+
+    <span class="hljs-meta">@PostMapping(path = &#x27;/&#x27;, produces = Mediatype.APPLICATION_JSON_VALUE)</span>
+    <span class="hljs-meta">@ResponseStatus(HttpStatus.CREATED)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">create</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> <span class="hljs-meta">@Valid</span> T entity)</span> </span>{
+        T entity = repository.create(entity);
+        log.info(<span class="hljs-string">&#x27;created entity with id: &#x27;</span> + entity.getId());
+        <span class="hljs-keyword">return</span> (T) Hibernate.unproxy(entity);
+    }
+
+    <span class="hljs-meta">@PutMapping(path = &#x27;/&#x27;)</span>
+    <span class="hljs-meta">@ResponseStatus(HttpStatus.ACCEPTED)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&#x27;id&#x27;)</span> K id, <span class="hljs-meta">@RequestBody</span> <span class="hljs-meta">@Valid</span> T entity)</span> </span>{
+        repository.save(entity);
+        log.info(<span class="hljs-string">&#x27;updated entity with id: &#x27;</span> + entity.getId());
+    }
+
+    <span class="hljs-meta">@DeleteMapping(path = &#x27;/{id}&#x27;)</span>
+    <span class="hljs-meta">@ReponseStatus(HttpStatus.OK)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">delete</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&#x27;id&#x27;)</span> K id)</span> </span>{
+        repository.delete(repository.getById(id));
+        log.info(<span class="hljs-string">&#x27;removed entity with id: &#x27;</span> + id.toString());
+    }
+
+}
+</div></code></pre>
+<pre><code class="language-Java"><div>
+<span class="hljs-meta">@MappedSuperclass</span>
+<span class="hljs-meta">@Getter</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AEntity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AVersionEntity</span> </span>{
+
+    <span class="hljs-meta">@Id</span>
+    <span class="hljs-meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span>
+    <span class="hljs-keyword">private</span> Long id;
+}
+
+<span class="hljs-meta">@Getter</span>
+<span class="hljs-meta">@MappedSuperclass</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AVersionEntity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>{
+    <span class="hljs-meta">@Version</span>
+    <span class="hljs-keyword">private</span> Long version;
+}
+
 </div></code></pre>
 
     </body>
